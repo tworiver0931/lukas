@@ -1,0 +1,10 @@
+_type: prompt
+input_variables: ["history", "input"]
+template: |
+  "CONVERSATION HISTORY
+  {history}
+
+
+  CURRENT CONVERSATION
+  User: {input}
+  Tutor:"

@@ -1,0 +1,87 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+
+<style>
+    a {
+        font-size: 24px;
+        font: caption;
+    }
+</style>
+
+
+<div>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <h2>틀린 문장</h2>
+    <ul>
+    {% for n in review_note %}
+        <li style="margin: 20px 0px;">
+            <a>{{ n[0] }}</a>
+            <a> → </a>
+            <a style="font-weight: bold;">{{ n[1] }}</a>
+            
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+
+
+
+<script>
+var chartArea = document.getElementById('myChart').getContext('2d');
+var wordCnt = JSON.parse('{{ word_cnt|safe }}');
+var labels = JSON.parse('{{ labels|safe }}');
+
+var myChart = new Chart(chartArea, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: '사용한 누적 단어 개수',
+            data: wordCnt,
+            backgroundColor: 'rgba(12, 202, 152, 1)',
+            borderColor: 'rgba(12, 202, 152, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    font: {
+                        size: 16
+                    }
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: '완료한 클래스 횟수',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                },
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 16
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 18,
+                        weight: 'bold'
+                    }
+                }
+            }
+        }
+    }
+});
+</script>
