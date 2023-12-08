@@ -10,3 +10,5 @@ Offers report about wrong sentences with correctness and number of words used in
 Run on KaKao chatbot.
 
 # Demo
+https://github.com/tworiver0931/lukas/assets/63793194/836a60ca-3aa0-42b6-bc7a-93705fcdffb8
+
